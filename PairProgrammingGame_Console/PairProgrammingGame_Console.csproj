@@ -56,5 +56,9 @@
       <Name>PairProgrammingGame_Class</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="DesignDoc.txt" />
+    <Content Include="pseudocode.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

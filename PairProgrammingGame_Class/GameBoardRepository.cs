@@ -13,9 +13,9 @@ namespace PairProgrammingGame_Class
 
         Player drofsnarState = new Player("", 0, 0, 0, false,false,3,0,0);
 
-        int maxX = 3;
-        int maxY = 3;
-        List<GamePiece>[,] _gameBoard = new List<GamePiece>[4, 4];
+        int maxX = 1;
+        int maxY = 1;
+        List<GamePiece>[,] _gameBoard = new List<GamePiece>[2, 2];
 
         private readonly Random _random = new Random();
 
@@ -46,7 +46,11 @@ namespace PairProgrammingGame_Class
 
         public void PlacePieceOnGameBoard(GamePiece gamePiece)
         {
+            Console.WriteLine($"Placing {gamePiece.Name} on the game board at coordinates {gamePiece.XCoord} , {gamePiece.YCoord}");
+
             _gameBoard[gamePiece.XCoord, gamePiece.YCoord].Add(gamePiece);
+
+
             if (gamePiece.Name.Contains("Drofsnar"))
             {
                 Player drofsnarPiece = (Player)gamePiece;
@@ -58,6 +62,8 @@ namespace PairProgrammingGame_Class
         {
             while (drofsnarLivesRemaining > 0)
             {
+                
+                
                 MovePieces();
                 EvaluateAndScore();
                 ResetAllMoveSwitches();
@@ -67,6 +73,8 @@ namespace PairProgrammingGame_Class
 
         public void MovePieces()
         {
+            Console.ReadLine();
+            Console.WriteLine("Moving pieces randomly - one position in any direction");
             for (int y = 0; y < maxY; y++)
             {
                 for (int x = 0; x < maxX; x++)
@@ -173,8 +181,8 @@ namespace PairProgrammingGame_Class
         public void ScoreDrofsnar(List<GamePiece> cell, Player currentDrofsnar)
         {
 
-            //Console.WriteLine($"Begin scoring. Drofsnar's score is {currentDrofsnar.PointsCounter}");
-            //Console.ReadLine();
+            Console.WriteLine($"Begin scoring. Drofsnar's score is {currentDrofsnar.PointsCounter}");
+            Console.ReadLine();
 
             int i = 0;
             while(i < cell.Count)
@@ -198,7 +206,7 @@ namespace PairProgrammingGame_Class
                 }
                 else
                 {
-                    if (!cell[i].Name.Contains("Stopper") || !cell[i].Name.Contains("Drofsnar"))
+                    if (!cell[i].Name.Contains("Stopper") && !cell[i].Name.Contains("Drofsnar"))
                     {
                         currentDrofsnar.PointsCounter += cell[i].Points;
                         cell[i].IsEliminated = true;
