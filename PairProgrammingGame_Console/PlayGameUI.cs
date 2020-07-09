@@ -16,7 +16,7 @@ namespace PairProgrammingGame_Console
 
             _gameBoardRepo.PlaceEmptyListsInGameBoard();
             PopulateGameboard();
-            //_gameBoardRepo.MoveTillDead();
+            _gameBoardRepo.MoveTillDead();
             //_gameBoardRepo.ReportResults(); 
 
         }
