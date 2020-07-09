@@ -9,13 +9,22 @@ namespace PairProgrammingGame_Class
     public class GameBoardRepository
     {
         int drofsnarLivesRemaining;
-        bool foundDrofsnarInList = false;
-
         Player drofsnarState = new Player("", 0, 0, 0, false,false,3,0,0);
+        //List<object> drofsnarList = new List<object>();
+        //drofsnarList.Add((bool)false);
+        //drofsnarList.Add(false);
 
-        int maxX = 3;
-        int maxY = 3;
-        List<GamePiece>[,] _gameBoard = new List<GamePiece>[4, 4];
+        //    (bool false, Player drofsnarState);
+        //    List<object>(bool false, Player drofsnarState);
+
+        //object[] drofsnarArray = new object[2]; // [0] = bool, [1] = drofsnarState (Player class)
+        //drofsnarArray[0] = false;
+
+
+        int maxX = 1;
+        int maxY = 1;
+        //List<GamePiece>[,] _gameBoard = new List<GamePiece>[maxX, maxY];
+        List<GamePiece>[,] _gameBoard = new List<GamePiece>[2, 2];
 
         private readonly Random _random = new Random();
 
@@ -34,7 +43,7 @@ namespace PairProgrammingGame_Class
         {
             gamePiece.XCoord = RandomNumber(0, maxX);
             gamePiece.YCoord = RandomNumber(0, maxY);
-            //Console.WriteLine(gamePiece);
+            Console.WriteLine(gamePiece);
         }
 
         public int RandomNumber(int min, int max)
@@ -56,6 +65,8 @@ namespace PairProgrammingGame_Class
 
         public void MoveTillDead()
         {
+            // before I develop the actual code, I'm going to test traversing the array and pulling all elements of each list
+            //ListEntireBoardAndIDHunters();
             while (drofsnarLivesRemaining > 0)
             {
                 MovePieces();
@@ -67,6 +78,15 @@ namespace PairProgrammingGame_Class
 
         public void MovePieces()
         {
+            // traverse through the y coordinates of the gameboard
+            //    traverse through the x coords
+            //       walk through the list
+            //           for a piece, 
+            //              generate a random number between 0 & 3 => L, R, U, D
+            //              adjust the xCoord & yCoord based on move
+            //              remove the piece from this list
+            //              place the piece in the new coords
+            //              set IsMoved to true
             for (int y = 0; y < maxY; y++)
             {
                 for (int x = 0; x < maxX; x++)
@@ -108,6 +128,7 @@ namespace PairProgrammingGame_Class
             switch (direction)
             {
                 case 0:
+                    //piece.XCoord -= 1;
                     piece.XCoord += (piece.XCoord > 0) ? -1 : 1; // Left movement
                     break;
                 case 1:
@@ -126,6 +147,7 @@ namespace PairProgrammingGame_Class
         {
             bool foundHunterInList = false;
             bool foundStopperInList = false;
+            bool foundDrofsnarInList = false;
             Player drofsnarState;
 
             bool InvincibleHunterInList = false;
@@ -138,8 +160,19 @@ namespace PairProgrammingGame_Class
 
                     foundHunterInList = CheckListForHunter(_gameBoard[x, y]);
                     foundStopperInList = CheckListForStopper(_gameBoard[x, y]);
+                    Console.WriteLine($"foundHunterInList is {foundHunterInList}");
+                    Console.WriteLine($"foundStopperInList is {foundStopperInList}");
 
+                    //drofsnarList = CheckListForDrofsnar(_gameBoard[x, y]);
+                    //if (!drofsnarList = null)
+                    //{
+                        //drofsnarState = (Player)drofsnarList[1];
+                        //foundDrofsnarInList = (bool)drofsnarList[0];
+
+                    //}
+                    //drofsnarState = (Player)drofsnarArray[1];
                     drofsnarState = CheckListForDrofsnar(_gameBoard[x, y]);
+                    Console.WriteLine($"foundDrofsnarInList is {foundDrofsnarInList}");
 
                     if (foundHunterInList)
                     {
@@ -173,8 +206,8 @@ namespace PairProgrammingGame_Class
         public void ScoreDrofsnar(List<GamePiece> cell, Player currentDrofsnar)
         {
 
-            //Console.WriteLine($"Begin scoring. Drofsnar's score is {currentDrofsnar.PointsCounter}");
-            //Console.ReadLine();
+            Console.WriteLine($"Begin scoring. Drofsnar's score is {currentDrofsnar.PointsCounter}");
+            Console.ReadLine();
 
             int i = 0;
             while(i < cell.Count)
@@ -214,6 +247,22 @@ namespace PairProgrammingGame_Class
                     }
                 }
 
+
+                //switch (cell[i].Name)
+                //{
+                //    case "an animal that would die if we scored":
+                //        //add score
+                //        cell.Remove(cell[i]);
+                //        i = 0;
+                //        removed = true;
+                //        break;
+                //    default:
+                //        break;
+                //}
+                //if (!removed)
+                //{
+                //i++;
+                //}
             }
         }
 
@@ -250,19 +299,40 @@ namespace PairProgrammingGame_Class
         }
 
         public Player CheckListForDrofsnar(List<GamePiece> gameBoardCell)
+        //public object[] CheckListForDrofsnar(List<GamePiece> gameBoardCell)
+        //public List<object> CheckListForDrofsnar(List<GamePiece> gameBoardCell)
         {
             for (int drofIndex = 0; drofIndex < gameBoardCell.Count; drofIndex++)
             {
                 if (gameBoardCell[drofIndex].Name.Contains("Drofsnar"))
                 {
                     Player drofsnarPiece = (Player)gameBoardCell[drofIndex];
-                    foundDrofsnarInList = true;
+                    //drofsnarList.Add(true);
+                    //drofsnarList.Add(drofsnarPiece);
+                    //drofsnarState = drofsnarPiece;
 
+                    //return drofsnarList;
 
                     return drofsnarPiece;
                 }
             }
+            //drofsnarList[0] = false;
+            //drofsnarList[1] = new Player();
+            //return drofsnarList;
             return null;
+
+
+            //var firstMatch = gameBoardCell.FirstOrDefault(i => i.Name.Contains("Drofsnar"));
+
+            //if (firstMatch != null)
+            //{
+            //    Console.WriteLine("Drofsnar is in this list");
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
 
         }
 
@@ -343,6 +413,80 @@ namespace PairProgrammingGame_Class
                 }
             }
         }
+
+
+
+
+        // Lambda expressions that don't work
+        // Find items where name contains "seat".
+        //Console.WriteLine("\nKillDrofsnar...Find: list item where name contains Drofsnar",
+        //    gameBoardCell.Find(x => x.Name.Contains("Drofsnar")));
+
+        //var firstMatch = gameBoardCell.FirstOrDefault(i => i.Name.Contains("Drofsnar"));
+
+        //var firstMatch = gameBoardCell.FirstOrDefault(i => 
+        //{  if(i.Name.Contains("Drofsnar"))
+        //    {
+        //        Player iPlayer = (Player)i;
+        //        iPlayer.NumberLives -= 1;
+        //        Console.WriteLine($"Drofsnar has {iPlayer.NumberLives} Lives remaining" +
+        //            $"");
+        //    }
+        //}
+
+        //);
+
+
+
+        //public void ListEntireBoardAndIDHunters()
+        //{
+
+        //    for (int y = 0; y <= maxY; y++)
+        //    {
+        //        for (int x = 0; x <= maxX; x++)
+        //        {
+        //            Console.WriteLine($"x: {x}, y: {y}");
+
+        //            List<GamePiece> listInCell = new List<GamePiece>();
+        //            listInCell = _gameBoard[x, y];
+        //            var firstMatch = listInCell.FirstOrDefault(i => i.Name.Contains("Hunter"));
+        //  //var firstMatch = listInCell.FirstOrDefault(i =>
+        //  //{
+        //  //    i.Name.Contains("Hunter");
+        //   //    Console.WriteLine($"i = {i}");
+        //  //    return true;
+        //  //});
+        //            if (firstMatch != null)
+        //            {
+        //                Console.WriteLine("A Bird Hunter is in this list");
+        //            }
+
+        //            foreach (GamePiece pieceInList in _gameBoard[x, y])
+        //            {
+        //                Console.WriteLine(pieceInList.Name);
+        //            }
+        //            Console.ReadLine();
+        //        }
+        //    }
+        //}
+
+
+
+        //public void ListGameBoardContents()
+        //{ 
+        //    for (int y = 0; y <= maxY; y++)
+        //    {
+        //        for (int x = 0; x <= maxX; x++)
+        //        {
+        //            Console.WriteLine($"x: {x}, y: {y}");
+        //            foreach(GamePiece pieceInList in _gameBoard[x, y])
+        //            {
+        //                Console.WriteLine(pieceInList.Name);
+        //            }
+        //            Console.ReadLine();
+        //        }
+        //    }
+        //}
 
     }
 }

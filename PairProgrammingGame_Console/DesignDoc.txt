@@ -1,0 +1,99 @@
+﻿Drofsnar
+
+int max-x = 25;
+int max-y = 25;
+The room is a 2-dimensional grid – e.g., 25 x 25.  Room[] = Array<Player>[max-x, max-y]
+
+
+max-x = 24
+max-y = 24
+
+4 possible moves (enum = {Left, Right, Up, Down})
+
+
+I want to assign my x-coordinate :::  x-coordinate = Random(24) ==> 12 
+I want to assign my y-coordinate :::  y-coordinate = Random(24) ==> 23 
+
+I want my move :::  move = Random(3) ===> 2
+from my enum, 
+
+
+Random (int max-value)
+{
+    return RandomFunction(0, max-value)
+}
+
+
+Random number generator to place each piece at the beginning of a game - RandomCoordinate(max-coordinate)
+
+Store all the players at each grid location
+Room[10, 15] = Drofsnar, Hunter 1, Ibis
+
+OBJECTS  ===========================================
+GamePiece –  Name / points  / x-coordinate / y-coordinate / moved switch (set to true after move / set to false when score – move once during Move)
+Hunter : GamePiece –  / StoppedCount / Chomped (if is stopped, wait for 3 moves; Drofsnar can eat them while StoppedCount > 0)
+Bird : GamePiece –  /  IsCaught  (start with 5 birds)
+
+Player : GamePiece / #lives / PointCounter / HunterCount
+
+Stopper : GamePiece  
+
+================================================
+
+Hunter1 /  (if vulnerable) / IsStopped / coordinates
+bird / points / IsCaught / coordinates
+
+HOUSEKEEPING =====================
+Create a GamePiece object
+Create a Hunter Object
+Create a Bird Object
+Create a Stopper Object
+
+Create a Player Object
+
+Create a Repo <Player> - store all GamePieces
+
+Create a 2-dimensional array (game board) of size (max-x, max-y)  (24, 24).  Each cell is a List<GamePiece>
+
+====================================================
+
+
+PLAY  =================================================
+
+Beginning of a game:  PopulateGameBoard method
+Each GamePiece / Player / Stopper calls a Random Number generator twice
+> once for x-coordinate (argument = max-x value)
+> once for y-coordinate (argument = max-y value)
+> Assign coordinates in the object
+> Place all gamepieces into the 2-dimensional array – random number generator for x & y coordinates for each GamePiece
+      - GameBoard[12, 15].Add
+
+Moves: MoveGamePiece method
+While Drofsnar still has lives
+> Prompt Player for a move (Left / Right / Up / Down)
+If Moved switch = false
+> Each GamePiece other than Player does a random number generator (1 – 4 = Left / Right / Up / Down)
+> Adjust their coordinates based on direction
+- Left = x - 1  /  Right = x + 1 / Up = y – 1 / Down = y + 1
+> Remove the GamePiece object from the current List and Add the object to the List at the array coordiates.
+> set Moved switch to true after moving
+
+
+Evaluate Collisions and determine Score:  EvaluateAndScore  method
+Traverse the 2-dimensional array.  
+At each cell, 
+if there’s a list, 
+then if the list Contains Hunter 
+      if Contains a Stopper – adjust StoppedCount (Drofsnar is safe on this move)
+      else if Contains Drofsnar – eat the Drofsnar & set Moved switch to false
+else if the list Contains Drofsnar, <score Drofsnar> & set Moved switch to false
+else (if no Drofsnar or Hunter) – set Moved switch to false
+** for every gamepiece on every list in every cell  - set Moved switch to false
+Return results to the Player.
+
+
+=====================================================
+
+Multi-Dimensional Array
+
+

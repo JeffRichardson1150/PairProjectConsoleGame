@@ -1,0 +1,220 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _55_PairProgramming_Class
+{
+    class TeamDesign
+    {
+
+        class ProgramUI
+        {
+
+
+            //  Class   GamePiece 
+            //   Class GamePiece –  Name / Points  / x-coordinate / y-coordinate / IsEliminated / moved switch (set to true after move / set to false when score – move once during Move)
+            //   Hunter : GamePiece –  / StoppedCount (if is stopped, wait for 3 moves; Drofsnar can eat them while StoppedCount > 0)
+            //   Bird : GamePiece – 
+            //  Player : GamePiece / NumberLives / PointCounter
+            //   Stopper : GamePiece
+
+
+
+            // Method that starts the application
+            public void Run()
+            {
+                // **** call the menu method ==> determines whether demo / single player
+                // call populate gameboard method
+                // call MoveTillDead method
+                // call ReportResults method
+
+            }
+
+            // Menu Method
+            private void Menu()
+            {
+                bool keepRunning = true;
+                while (keepRunning)
+                {
+
+                }
+
+                // Display our Options to user
+                Console.WriteLine("Select a menu opton:\n" +
+                    "1. Watch Sample Game: \n" +
+                    "2. Single Player: \n" +
+                    "3. Exit: ");
+
+                // Get user's input
+                string input = Console.ReadLine();
+
+                // Evaluate the user's input and act accordingly
+                switch (input)
+                {
+                    case "1":
+                        // Watch Demo
+                        break;
+                    case "2":
+                        //Single Player
+                        break;
+                    case "3":
+                        // Exit
+                        break;
+                    default:
+                        Console.WriteLine("Please enter a valid number:");
+                        break;
+                }
+
+            }  // Menu method should end here
+
+            // Populate Gameboard method
+            //    For each GamePiece object
+            //    {
+            //          call method : AssignRandomCoordinates for that gamepiece
+            //          call method : PlacePieceOnGameBoard
+            //    }
+            //    call method : PopulatePlayerOnGameboard
+            //    call EvaluateAndScore
+
+            //  method : MoveTillDead
+            //    while #lives > 0
+            //        prompt the user  Console.WriteLine("move direction? (U, D, L, R)")  char nextMove = Console.ReadKey();
+            //        call method MoveGamePieces  (traverse the gameboard. when reach Player, move according to variable_)
+            //        call method EvaluateAndScore (foreach cell in the gameboard, pull contents of the list, score according to who is on that spot)
+
+
+            // method ReportResults
+            //    console writeline - message containing final score
+
+            //***  Class GamePiece    with Properties  Name, xCoord, yCoord, ...
+            //***  Class  Bird : GamePiece    -    ( Bird RedCrossbill = new Bird() )
+            // method AssignRandomCoordinates
+            //    request a random xCoord from RandomGenerator
+            //    assign the xCoord in the object property   ( RedCrossbill.xCoord = RandomNbr...15
+            //    request a random yCoord from RandomGenerator
+            //    assign the yCoord in the object property  ( RedCrossbill.yCoord = RandomNbr...  12
+
+            // method PlacePieceOnGameBoard
+            //    in the List at GameBoard[xCoord, yCoord],  .Add the object to the List (** our GameBoard is an array of dimensions (x_max, y_max). Each cell in the array contains a List of GamePiece objects.)
+
+            //  method PopulatePlayerOnGameBoard
+            //     prompt for initial coordinates
+            //     assign Player.xCoord, yCoord based on input
+            //     method PlacePieceOnGameBoard
+
+            //  method MoveGamePieces
+            //      foreach cell in the array
+            //          List.Remove each item
+            //          if !<object>.IsEliminated 
+            //              if It's Grofsnar;
+            //                  ** assign xCoord & yCoord based on the variable "nextMove" we prompted for in our MoveTillDead method
+            //              else  // it's not Grofsnar and it's not eliminated
+            //                  moveDirection = RandomGenerator(3)
+            //                  switch (moveDirection)
+            //                      case 0: //Left
+            //                          <object>.xCoord -= 1;
+            //                      etc...
+
+            //****  movements - need to check for in-bounds coordinates
+
+            //  method AssignRandomPieceMove
+
+            //  method EvaluateAndScore
+            //      foreach cell in our GameBoard
+            //          method LookForInvincibleHunter
+            //          method LookForGrofsnar
+
+                                List<GamePiece> listInCell = new List<GamePiece>();
+                    listInCell = _gameBoard[x, y];
+
+            //
+
+            //  method LookForInvincibleHunter
+            //     foreach cell of the GameBoard (from the first cell of the GameBoard [0, 0] through the last cell of the GameBoard [x_max, y_max])
+            //         If the List Contains "Hunter" && Hunter.StopCount = 0
+            //             then if the List Contains a "Stopper"
+            //                  then Hunter.StopCount = 3
+            //              Else (there's No Stopper) null
+            //         Else (Not invincible Hunter) null
+            //
+            //
+            //  method LookForGrofsnar
+            //         If the list Contains "Grofsnar"
+            //              if the List Contains "Hunter" 
+            //                  if Hunter.StopCount = 0
+            //                       kill Grofsnar
+            //                       *** Grofsnar doesn't get to catch birds
+            //                  else
+            //                       kill Hunter (& set IsEliminated switch to true)
+            //                       
+            //                       call method ScoreBirds (& set Caught switch to true)
+            //              else (no Hunter)
+            //                  call method ScoreBirds  (& set Caught switch to true)
+            //                   
+            //  method ScoreBirds
+            //      Look through the objects in the list
+            //      Drofsnar.PointsCounter  +=  <object>.Points
+            //      <bird object>.IsEliminated = true
+
+
+
+            // Directions / Terms of Use
+
+            // Define GamePieces
+
+            // Define Hunter Object
+
+            // Define Bird Object 4 plus 1 objects
+
+            // Define Stopper Object
+
+            // Generate 2 diminsional array (game board) of size max-x, max-y)or (24,24)
+
+            // Beginning of a game
+
+            // Place PlayerOne
+            Console.WriteLine("Enter your name: ");
+                    string namePlayer = Console.ReadLine();
+            Console.WriteLine($"{ namePlayer}, where would you like to place your player?\n" +
+                    $"Please choose a column position between 1 and {max_x + 1}: ");
+                    int xCoord = Convert.ToInt32(Console.ReadLine()) - 1;
+            Console.WriteLine($"Please choose a row position between 1 and {max_y + 1}: ");
+                    int yCoord = Convert.ToInt32(Console.ReadLine()) - 1;
+
+
+
+            Console.WriteLine("You may move one space in any direction.\n" +
+                            "Please Choose Your Direction (U,D,L,R):");
+                     string direction = Console.ReadLine();  // We want to change this to ReadKey() & convert to lc
+
+
+            // Place/Move Tokens method
+
+
+
+            // Evaluate Placement set t++
+
+            // Determine if we have a winner or loser
+
+            // If no
+
+            // If Winner
+
+            // If Loser
+
+            // Move Pieces
+
+            // Clear <list>
+
+            // Go Back to get new User Move and Generate new moves
+
+        }
+
+    }
+}
+
+
+    }
+}

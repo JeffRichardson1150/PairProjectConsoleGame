@@ -40,7 +40,7 @@ namespace PairProgrammingGame_Console
             Hunter BirdHunterThree = new Hunter("Bird Hunter 3", 200, 0, 0, false, false, 0);
             Hunter BirdHunterFour = new Hunter("Bird Hunter 4", 200, 0, 0, false, false, 0);
             GamePiece Stopper = new GamePiece("Stopper", 0, 0, 0, false, false);
-            Player Grofsnar = new Player("Grofsnar", 0, 0, 0, false, false, 3, 0, 0);
+            Player Drofsnar = new Player("Drofsnar", 0, 0, 0, false, false, 3, 0, 0);
 
             _gameBoardRepo.AssignRandomCoordinates(birdOne);
             _gameBoardRepo.AssignRandomCoordinates(birdTwo);
@@ -59,7 +59,7 @@ namespace PairProgrammingGame_Console
             _gameBoardRepo.AssignRandomCoordinates(BirdHunterThree);
             _gameBoardRepo.AssignRandomCoordinates(BirdHunterFour);
             _gameBoardRepo.AssignRandomCoordinates(Stopper);
-            _gameBoardRepo.AssignRandomCoordinates(Grofsnar);
+            _gameBoardRepo.AssignRandomCoordinates(Drofsnar);
 
 
             _gameBoardRepo.PlacePieceOnGameBoard(birdOne);
@@ -79,7 +79,7 @@ namespace PairProgrammingGame_Console
             _gameBoardRepo.PlacePieceOnGameBoard(BirdHunterThree);
             _gameBoardRepo.PlacePieceOnGameBoard(BirdHunterFour);
             _gameBoardRepo.PlacePieceOnGameBoard(Stopper);
-            _gameBoardRepo.PlacePieceOnGameBoard(Grofsnar);
+            _gameBoardRepo.PlacePieceOnGameBoard(Drofsnar);
 
         }
     }
