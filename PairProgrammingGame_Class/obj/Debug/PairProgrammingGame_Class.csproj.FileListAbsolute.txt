@@ -1,0 +1,6 @@
+C:\ElevenFiftySD\GoldBadge\PairProgrammingConsoleGame\PairProgrammingGame_Class\bin\Debug\PairProgrammingGame_Class.dll
+C:\ElevenFiftySD\GoldBadge\PairProgrammingConsoleGame\PairProgrammingGame_Class\bin\Debug\PairProgrammingGame_Class.pdb
+C:\ElevenFiftySD\GoldBadge\PairProgrammingConsoleGame\PairProgrammingGame_Class\obj\Debug\PairProgrammingGame_Class.csprojAssemblyReference.cache
+C:\ElevenFiftySD\GoldBadge\PairProgrammingConsoleGame\PairProgrammingGame_Class\obj\Debug\PairProgrammingGame_Class.csproj.CoreCompileInputs.cache
+C:\ElevenFiftySD\GoldBadge\PairProgrammingConsoleGame\PairProgrammingGame_Class\obj\Debug\PairProgrammingGame_Class.dll
+C:\ElevenFiftySD\GoldBadge\PairProgrammingConsoleGame\PairProgrammingGame_Class\obj\Debug\PairProgrammingGame_Class.pdb
